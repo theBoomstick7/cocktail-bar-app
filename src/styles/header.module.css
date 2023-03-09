@@ -1,0 +1,16 @@
+div{
+    display: flex;
+    background-color: beige;
+    width: 100vw;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    max-width: 4rem;
+    max-height: 4rem;
+}
+h1{
+
+}
