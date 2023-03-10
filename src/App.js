@@ -1,17 +1,25 @@
-import './App.css';
-import { Header } from './components/Header';
+import { Footer } from './components/common/Footer';
+import { Header } from './components/common/Header';
+import { Home } from './components/common/Home';
 import { BootstrapLink } from './components/StylesLink';
 
 function App() {
   return (
-    <div className="App">
+   <>
+      <div >
+      <BootstrapLink />         
+      <Header/>
+      </div>
       
-            <BootstrapLink />
+      <Home />
 
-            <>
-            <Header/>
-            </>    
-    </div>
+      <Footer />
+ 
+   
+   </>
+      
+            
+  
   );
 }
 

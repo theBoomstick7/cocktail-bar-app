@@ -1,16 +1,28 @@
-div{
+.headerDiv {
     display: flex;
     background-color: beige;
     width: 100vw;
+    height: 15vh;
     padding: 0.5rem;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    padding-top: 1.5rem;
 }
 
 img{
     max-width: 4rem;
     max-height: 4rem;
 }
-h1{
-
+.headerDiv h1{
+    margin-bottom: 1rem;
+    text-align: center;
 }
+ul{
+    display: flex;
+    gap: 1rem;
+}
+ul li {
+    list-style: none;
+}
+

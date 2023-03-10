@@ -1,0 +1,14 @@
+.home{
+    background-color: aquamarine;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+.introduction{
+    max-width: 35%;
+    text-align: center;
+   
+
+}
