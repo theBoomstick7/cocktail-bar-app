@@ -1,14 +1,18 @@
 .home{
-    background-color: aquamarine;
+    /* background-color: #c1b698; */
     width: 100vw;
-    height: 80vh;
+    height: 71.5vh;
     display: flex;
     justify-content: center;
     padding-top: 2rem;
+    background-image: url('.././images/background.jpg') ;
+    object-fit:fill;
+    background-repeat: no-repeat;
+    background-size: 100vw 80vh;
+    background-position: center;
 }
 .introduction{
     max-width: 35%;
     text-align: center;
-   
-
+    color: beige;
 }

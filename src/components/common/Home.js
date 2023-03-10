@@ -11,7 +11,7 @@ export const Home = () => {
                 <h2 className="firstheading">
                         WELCOME
                 </h2>
-
+                
                 <p className="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, id? Delectus, mollitia. </p>
             </div>
           
