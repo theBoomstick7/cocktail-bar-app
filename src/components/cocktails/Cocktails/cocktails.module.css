@@ -1,0 +1,18 @@
+.cocktailsSelection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+    width: 100vw;
+}
+.titles{
+    text-align: center;
+}
+.cocktailList{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    justify-content: space-evenly;
+}

@@ -1,16 +1,16 @@
 import{Routes,Route} from 'react-router-dom'
 
-import { Login } from './components/auth/Login';
-import { Logout } from './components/auth/Logout';
-import { Register } from './components/auth/Register';
+import { Login } from './components/auth/Login/Login';
+import { Logout } from './components/auth/Logout/Logout';
+import { Register } from './components/auth/Register/Register';
 
 import { Footer } from './components/common/Footer';
 import { Header } from './components/common/Header';
 import { Home } from './components/common/Home';
 
 import { BootstrapLink } from '././components/common/StylesLink';
-import { Recipies } from './components/cocktails/Recipies';
-import { Cocktails } from './components/cocktails/Cocktails';
+import { Recipies } from './components/cocktails/Recipies/Recipies';
+import { Cocktails } from './components/cocktails/Cocktails/Cocktails';
 
 function App() {
   return (
