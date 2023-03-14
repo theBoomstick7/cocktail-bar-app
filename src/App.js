@@ -11,14 +11,16 @@ import { Home } from './components/common/Home';
 import { BootstrapLink } from '././components/common/StylesLink';
 import { Recipies } from './components/cocktails/Recipies/Recipies';
 import { Cocktails } from './components/cocktails/Cocktails/Cocktails';
+import { Blogs} from './components/blogs/Blogs/Blogs'
 
 function App() {
   return (
    <>
+
       
       <BootstrapLink />    
       <Header/>
-        
+        <main>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route  path='/login' element={<Login />}/>
@@ -26,10 +28,13 @@ function App() {
           <Route  path='/register' element={<Register />}/>
           <Route  path='/recipies' element={<Recipies />}/>
           <Route  path='/cocktails' element= {<Cocktails />} />
+          <Route  path='/blogs' element= {<Blogs />} />
+
           
           <Route  path='*' element={<h1>404</h1>}/>
 
         </Routes>
+		</main>
       
       <Footer />
     </>

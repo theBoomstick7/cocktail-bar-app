@@ -1,11 +1,11 @@
-article{
+.cocktail{
     text-align: center;
     width: 25%;
     background-color: beige;
     padding: 1rem 2rem;
     border-radius: 3rem;
 }
-article img{
+.cocktail img{
     width: 10rem;
     height: 8rem;
     margin-bottom: 1rem;

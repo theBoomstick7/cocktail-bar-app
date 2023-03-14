@@ -1,13 +1,14 @@
 .footer{
-  position: absolute;
-  bottom: 0;
   display: flex;
-  width: 100vw;
+  min-width: 100vw;
   flex-direction: column;
-justify-content: center; 
-    line-height: 1;
+  justify-content: center; 
+  line-height: 1;
   font-size: 0.8rem;
   text-align: center;
   background-color: beige;
-padding-top: 1rem;
+  padding-top: 1rem;
+  
+  bottom: 0;
+  
 }

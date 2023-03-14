@@ -1,0 +1,8 @@
+.blog{
+    border: 1px solid black;
+    margin: 1.5rem 2rem;
+}
+.blog img{
+    width: 25rem;
+    height: 13.5rem
+}

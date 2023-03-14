@@ -5,13 +5,13 @@ export const Footer = () => {
 
     return(
 
-        <>
-        <div className={FooterStyles.footer}>
+        
+        <footer className={FooterStyles.footer}>
             <p>Cocktail`s Hub project for SoftUni</p>
             <p>Created by : Aleksandar Vartolomeev </p>
             <p>All right reserved 2023</p>
-        </div>
-        </>
+        </footer>
+        
     )
 
 }
