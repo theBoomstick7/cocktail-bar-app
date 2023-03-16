@@ -1,0 +1,18 @@
+.createForm{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.ingredients{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 1rem;
+}
+
+/* .ingredient{
+    gap: 1rem;
+} */

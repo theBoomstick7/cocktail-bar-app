@@ -24,6 +24,8 @@ export const Header = () => {
                     <li><Link to={'/login'}>Login</Link></li>
                     <li><Link to={'/register'}>Register</Link></li>
                     <li><Link to={'/logout'}>Logout</Link></li>
+                    <li><Link to={'/cocktails/create'}>Add a cocktail</Link></li>
+
                     
 
                 </ul>
