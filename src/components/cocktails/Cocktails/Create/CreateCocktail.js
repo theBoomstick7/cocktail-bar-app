@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 
 import styles from '../Create/createCocktail.module.css'
-export const CreateCocktail = () => {
+export const CreateCocktail = ({
+    onCreateCocktailSubmit
+}) => {
 
     const [ingredients, setIngredients] = useState({})
     const [values, setValues] = useState({
@@ -23,7 +25,7 @@ export const CreateCocktail = () => {
         e.preventDefault()
    
         let data = Object.assign({},values,{ingredients:Object.keys(ingredients)})
-        console.log(data)
+        onCreateCocktailSubmit(data)
     }
 
     return(

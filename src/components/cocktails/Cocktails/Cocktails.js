@@ -2,7 +2,9 @@ import { Cocktail } from "./Cocktail/Cocktail"
 
 import styles from '../Cocktails/cocktails.module.css'
 
-export const Cocktails = () => {
+export const Cocktails = ({
+    cocktails
+}) => {
 
 
     return(
@@ -12,9 +14,13 @@ export const Cocktails = () => {
                 <h2>Take a look at our variety of cocktails</h2>
             </div>
             <div className={styles.cocktailList}>
-                <Cocktail />
-                <Cocktail />
-                <Cocktail />
+                {cocktails.map( x=>
+                    <Cocktail key={x._id} {...x}/>
+                )}
+
+                {cocktails.length === 0 && (
+                    <h3>NO COCKTAILS YET</h3>
+                )}
             </div>
 
         </section>
