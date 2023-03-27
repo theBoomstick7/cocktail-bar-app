@@ -1,5 +1,5 @@
 import styles from '../Cocktail/cocktail.module.css'
-
+import { Link } from 'react-router-dom'
 
 export const Cocktail = ({
     _id,
@@ -15,9 +15,9 @@ export const Cocktail = ({
 
             <img src={imageUrl} alt="any" />
 
-            <p className="description">{recipe}</p>
+            <p className={styles.description}>{recipe}</p>
 
-            <button>Recipies & more</button>
+            <Link to={`/cocktails/${_id}`}>Recipies & more </Link>
 
         </article>
     )
