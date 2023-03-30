@@ -32,13 +32,7 @@ const [auth, setAuth] = useState({})
         })
     }, []);
 
-    const onCreateCocktailSubmit = async (data) => {
-        const newCocktail = await cocktailsService.create(data);
-
-        setCocktails(state => [...state, newCocktail]);
-
-        navigate('/cocktails')
-    }
+  
 
 const onLoginSubmit = async (data) => {
         try {
@@ -86,7 +80,15 @@ const onLoginSubmit = async (data) => {
         username: auth.username,
         isAuthenticated : !!auth.accessToken,
       }
-
+      
+      const onCreateCocktailSubmit = async (data) => {
+        debugger
+          const newCocktail = await cocktailsService.create(data,auth.accessToken);
+  
+          setCocktails(state => [...state, newCocktail]);
+  
+          navigate('/cocktails')
+      }
   return (
   <>
 

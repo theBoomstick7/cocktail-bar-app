@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = 'http://localhost:3030/jsonstore/cocktails';
+const baseUrl = 'http://localhost:3030/data/cocktails';
 
 
 export const getAll = async () => {
@@ -9,9 +9,9 @@ export const getAll = async () => {
     return cocktails;
 }
 
-export const create = async (cocktailData) => {
+export const create = async (cocktailData,token) => {
     
-    const result = await request.post(baseUrl,cocktailData)
+    const result = await request.post(baseUrl,cocktailData,token)
     
     return result
 }
