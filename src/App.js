@@ -2,6 +2,8 @@ import{Routes,Route, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import * as cocktailsService from './services/cocktailService';
+import { AuthContext } from './contexts/AuthContext';
+import * as authService from './services/authService'
 
 import { Login } from './components/auth/Login/Login';
 import { Logout } from './components/auth/Logout/Logout';
@@ -20,6 +22,8 @@ import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCo
 function App() {
 const navigate = useNavigate();
 const [cocktails, setCocktails] =useState([]);
+const [auth, setAuth] = useState({})
+
 
     useEffect(() => {
         cocktailsService.getAll()
@@ -35,10 +39,28 @@ const [cocktails, setCocktails] =useState([]);
 
         navigate('/cocktails')
     }
-  return (
-   <>
 
-      
+const onLoginSubmit = async (data) => {
+        try {
+          const result =  await authService.login(data)
+          setAuth(result)
+          
+          navigate('/')
+        } catch (error) {
+          console.log(error)
+          throw(error)
+        }
+  
+  
+        
+      }
+
+
+  return (
+  <>
+
+    <AuthContext.Provider value={{onLoginSubmit}}>
+
       <BootstrapLink />    
       <Header/>
         <main>
@@ -59,7 +81,9 @@ const [cocktails, setCocktails] =useState([]);
 		</main>
       
       <Footer />
-    </>
+    </AuthContext.Provider>
+  </>
+      
       
             
   

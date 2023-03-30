@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 1rem 3rem;
     width: 100vw;
-    height: 45rem;
+    /* height: 45rem; */
 }
 .titles{
     text-align: center;

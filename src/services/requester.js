@@ -31,11 +31,11 @@ const request = async (method,url,data) => {
             return res;
         } else 
         {
-            return res.json();
+            return res.json()
         }
     } catch (error) {
         alert(error.message);
-        throw error;
+        return{}
     }
 }
 
