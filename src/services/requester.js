@@ -21,21 +21,21 @@ const request = async (method,url,data) => {
     try {
         const res = await fetch(url, options);
 
-        if (res.ok == false)
+        if (res.ok === false)
         {
             const error = await res.json()
             throw new Error(error.message);
         }
 
-        if (res.status == 204) {
-            return res;
+        if (res.status === 204) {
+            return {};
         } else 
         {
             return res.json()
         }
     } catch (error) {
         alert(error.message);
-        return{}
+        throw error
     }
 }
 

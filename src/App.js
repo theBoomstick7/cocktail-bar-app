@@ -48,18 +48,36 @@ const onLoginSubmit = async (data) => {
           navigate('/')
         } catch (error) {
           console.log(error)
-          throw(error)
+          throw new Error(error.message)
         }
-  
-  
         
-      }
+    }
 
+    const onRegisterSubmit = async(values) =>{
+      try {
+        const result = await authService.register(values)
+        setAuth(result)
+
+        navigate(`/`)
+      } catch (error) {
+        console.log(error)
+        throw new Error(error.message)
+      }
+    }
+
+      const context = {
+        onLoginSubmit,
+        userId: auth._id,
+        token : auth.accessToken,
+        userEmail : auth.email,
+        isAuthenticated : !!auth.accessToken,
+        onRegisterSubmit
+      }
 
   return (
   <>
 
-    <AuthContext.Provider value={{onLoginSubmit}}>
+    <AuthContext.Provider value={context}>
 
       <BootstrapLink />    
       <Header/>
