@@ -54,24 +54,37 @@ const onLoginSubmit = async (data) => {
     }
 
     const onRegisterSubmit = async(values) =>{
+      const {RePass, ...registerData} = values
+      if(RePass !== registerData.Password) {
+        throw new Error('Passwords don`t match')
+
+      }
+
       try {
-        const result = await authService.register(values)
+        const result = await authService.register(registerData)
         setAuth(result)
 
-        navigate(`/`)
+        navigate('/')
       } catch (error) {
         console.log(error)
         throw new Error(error.message)
       }
     }
 
+     const onLogout = async (token) =>{
+      setAuth({})
+      return
+    };
+
       const context = {
         onLoginSubmit,
+        onRegisterSubmit,
+        onLogout,
         userId: auth._id,
         token : auth.accessToken,
         userEmail : auth.email,
+        username: auth.username,
         isAuthenticated : !!auth.accessToken,
-        onRegisterSubmit
       }
 
   return (
@@ -84,8 +97,8 @@ const onLoginSubmit = async (data) => {
         <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route  path='/login' element={<Login />}/>
-          <Route  path='/logout' element={<Logout />}/>
+          <Route  path='/login' element={<Login />} />
+          <Route  path='/logout'  element={<Logout />}/>
           <Route  path='/register' element={<Register />}/>
           <Route  path='/recipies' element={<Recipies />}/>
           <Route  path='/cocktails' element= {<Cocktails cocktails={cocktails} />} />

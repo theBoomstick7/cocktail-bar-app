@@ -5,7 +5,7 @@ import headerStyles from "../../styles/header.module.css"
 // import logo from '../../images/cocktail.jpg'
 
 export const Header = () => {
-    const {isAuthenticated,userEmail} = useContext(AuthContext)
+    const {isAuthenticated,onLogoutClick,token} = useContext(AuthContext)
 
 
     return( 
@@ -25,7 +25,7 @@ export const Header = () => {
                         <>
                         <li><Link to={'/cocktails/create'}>Add a cocktail</Link></li>
                         <li><Link to={'/logout'}>Logout</Link></li>
-                        <span>Hello, {userEmail}</span>
+                        <span>Hello, {}</span>
                         </>
                     )}
                     {!isAuthenticated && (

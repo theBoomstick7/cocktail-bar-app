@@ -9,3 +9,6 @@ export const login = (loginData) => {
 export const register = (data) => {
     return request.post(`${baseUrl}/register`, data)
 }
+export const logout = (token) => {
+    return request.get(`${baseUrl}/logout`, token)
+}

@@ -1,4 +1,4 @@
-const request = async (method,url,data) => {
+const request = async (method,url,data,token) => {
     
     
     const options = {};
@@ -7,11 +7,16 @@ const request = async (method,url,data) => {
         options.method = method;
 
         
-        if (data !== undefined) {
-            options.headers = {
-                'content-type': 'application/json',
+            if (data !== undefined) {
+                options.headers = {
+                    'content-type': 'application/json',
+                };
+            
+            if(token){
+                options.headers = {
+                    'X-Authorization': {token}
+                }
             };
-          
             options.body = JSON.stringify(data);
         };
     }

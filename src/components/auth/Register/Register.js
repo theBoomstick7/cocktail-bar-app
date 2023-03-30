@@ -30,17 +30,17 @@ export const Register = () => {
             <h1>REGISTER PAGE</h1>
         
             <label htmlFor="email">Email:</label>
-            <input type="email" name={registerFormKeys.Email} onChange={changeHandler} placeholder='ivan@mail.bg'/>
+            <input type="email" name={registerFormKeys.Email} onChange={changeHandler} value={values[registerFormKeys.Email]}  placeholder='ivan@mail.bg'/>
         
             <label htmlFor="username">Username</label>
-            <input type="text" name={registerFormKeys.Username} onChange={changeHandler} placeholder='IvanTheBartender'/>
+            <input type="text" name={registerFormKeys.Username} onChange={changeHandler} value={values[registerFormKeys.Username]} placeholder='IvanTheBartender'/>
 
             
             <label htmlFor="password">Password</label>
-            <input type="password" name={registerFormKeys.Password} onChange={changeHandler} placeholder='********'/>
+            <input type="password" name={registerFormKeys.Password} onChange={changeHandler} value={values[registerFormKeys.Password]} placeholder='********'/>
 
             <label htmlFor="repass">Repeat Password</label>
-            <input type="password" name={registerFormKeys.RePass} onChange={changeHandler} placeholder='********'/>
+            <input type="password" name={registerFormKeys.RePass} onChange={changeHandler} value={values[registerFormKeys.RePass]} placeholder='********'/>
 
             <button type='submit'>REGISTER</button>
             </div>
