@@ -1,17 +1,26 @@
-import * as request from './requester';
+import {requestFactory} from './requester';
 
 const baseUrl = 'http://localhost:3030/data/cocktails';
 
-
-export const getAll = async () => {
-    const result = await request.get(baseUrl)
-    const cocktails = Object.values(result)
-    return cocktails;
-}
-
-export const create = async (cocktailData,token) => {
+export const cocktailsServiceFactory = (token) => {
+    const request = requestFactory(token)
+   
+    const getAll = async () => {
+        const result = await request.get(baseUrl)
+        const cocktails = Object.values(result)
+        return cocktails;
+    }
     
-    const result = await request.post(baseUrl,cocktailData,token)
-    
-    return result
+     const create = async (cocktailData,token) => {
+        
+        const result = await request.post(baseUrl,cocktailData,token)
+        
+        return result
+    }
+
+
+    return {
+        getAll,
+        create
+    }
 }

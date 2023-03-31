@@ -1,9 +1,12 @@
-import{Routes,Route, useNavigate} from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import { Routes,Route, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import * as cocktailsService from './services/cocktailService';
 import { AuthContext } from './contexts/AuthContext';
-import * as authService from './services/authService'
+import  {cocktailsServiceFactory} from './services/cocktailService';
+import {authServiceFactory} from './services/authService'
+import { useService } from './hooks/useService';
+
 
 import { Login } from './components/auth/Login/Login';
 import { Logout } from './components/auth/Logout/Logout';
@@ -22,22 +25,27 @@ import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCo
 function App() {
 const navigate = useNavigate();
 const [cocktails, setCocktails] =useState([]);
-const [auth, setAuth] = useState({})
+const [auth, setAuth] = useState({});
+const cocktailService = cocktailsServiceFactory(auth && auth.accessToken);
+const authService = authServiceFactory(auth && auth.accessToken);
+
 
 
     useEffect(() => {
-        cocktailsService.getAll()
+      cocktailService.getAll()
         .then(result => {
             setCocktails(result);
         })
-    }, []);
+    },[]);
 
   
 
 const onLoginSubmit = async (data) => {
         try {
           const result =  await authService.login(data)
+          console.log(result)
           setAuth(result)
+          console.log(auth);
           
           navigate('/')
         } catch (error) {
@@ -65,9 +73,10 @@ const onLoginSubmit = async (data) => {
       }
     }
 
-     const onLogout = async (token) =>{
+     const onLogout = async () =>{
+      
       setAuth({})
-      return
+      
     };
 
       const context = {
@@ -80,10 +89,10 @@ const onLoginSubmit = async (data) => {
         username: auth.username,
         isAuthenticated : !!auth.accessToken,
       }
-      
+
       const onCreateCocktailSubmit = async (data) => {
-        debugger
-          const newCocktail = await cocktailsService.create(data,auth.accessToken);
+    
+          const newCocktail = await cocktailService.create(data,auth.accessToken);
   
           setCocktails(state => [...state, newCocktail]);
   

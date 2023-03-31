@@ -1,6 +1,5 @@
-const request = async (method,url,data,token,) => {
-    
-    
+const request = async (method,token,url,data) => {
+
     const options = {};
 
     if(method !== 'GET') {
@@ -16,17 +15,19 @@ const request = async (method,url,data,token,) => {
             options.body = JSON.stringify(data);
         };
     }
-    debugger
-    if(token){
     
-
-        options.headers = {
-            ...options.headers,
-            'X-Authorization': token
-        }
-    };
+  
     
     try {
+        
+        if(token){
+    
+
+            options.headers = {
+                ...options.headers,
+                'X-Authorization': token
+            }
+        };
         const res = await fetch(url, options);
 
         if (res.ok === false)
@@ -47,16 +48,28 @@ const request = async (method,url,data,token,) => {
     }
 }
 
-export const get = async (url) => {
-    return request('get',url); 
-}
+// export const get = async (url) => {
+//     return request('get',url); 
+// }
 
-export const post = async (url,data,token) => {
-    return request('post', url ,data,token);
-}
-export const put = async (url,data) => {
-    return request('put', url,  data);
-}
-export const del = async (url) => {
-    return request('put',url, 'delete')
+// export const post = async (url,data,token) => {
+//     return request('post', url ,data,token);
+// }
+// export const put = async (url,data) => {
+//     return request('put', url,  data);
+// }
+// export const del = async (url) => {
+//     return request('put',url, 'delete')
+// }
+
+export const requestFactory = (token) => {
+    
+    return {
+         get: request.bind(null, 'GET',token),
+         post : request.bind(null, 'POST',token),
+         put : request.bind(null, 'PUT',token),
+         patch : request.bind(null, 'PATCH',token),
+         del :request.bind(null, 'DELETE',token),
+        
+    }
 }

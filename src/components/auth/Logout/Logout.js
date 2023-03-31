@@ -5,7 +5,7 @@ import { AuthContext } from "../../../contexts/AuthContext"
 
 export const Logout = () => {
 
-    const {onLogout} = useContext(AuthContext)
+    const {onLogout,} = useContext(AuthContext)
 
     useEffect(() => {
         onLogout();
