@@ -1,4 +1,4 @@
-import { Cocktail } from "./Cocktail/Cocktail"
+import { Cocktail } from './Cocktail/Cocktail'
 
 import styles from '../Cocktails/cocktails.module.css'
 

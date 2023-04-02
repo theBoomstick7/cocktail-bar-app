@@ -52,9 +52,9 @@ export const AuthProvider = ({
     const onLogout = async () =>{
         
         //await logout from service
+        setAuth({})
         await authService.logout()
 
-        setAuth({})
         
       };
 

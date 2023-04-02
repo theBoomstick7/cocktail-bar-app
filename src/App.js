@@ -19,6 +19,7 @@ import { Recipies } from './components/cocktails/Recipies/Recipies';
 import { Cocktails } from './components/cocktails/Cocktails/Cocktails';
 import { Blogs} from './components/blogs/Blogs/Blogs'
 import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCocktail';
+import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetails/CocktailDetails';
 
 function App() {
 const navigate = useNavigate();
@@ -61,7 +62,7 @@ const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
           <Route  path='/cocktails' element= {<Cocktails cocktails={cocktails} />} />
           <Route  path='/blogs' element= {<Blogs />} />
           <Route path='/cocktails/create' element= {<CreateCocktail onCreateCocktailSubmit={onCreateCocktailSubmit}/>} />
-
+          <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
           
           <Route  path='*' element={<h1>404</h1>}/>
 

@@ -18,9 +18,15 @@ export const cocktailsServiceFactory = (token) => {
         return result
     }
 
+    const getOne = async (id) => {
+        const result = await request.get(`${baseUrl}/${id}`)
+        return result
+    }
+
 
     return {
         getAll,
-        create
+        create,
+        getOne
     }
 }
