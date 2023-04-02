@@ -2,10 +2,8 @@
 import { Routes,Route, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { AuthContext } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import  {cocktailsServiceFactory} from './services/cocktailService';
-import {authServiceFactory} from './services/authService'
-import { useService } from './hooks/useService';
 
 
 import { Login } from './components/auth/Login/Login';
@@ -25,9 +23,7 @@ import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCo
 function App() {
 const navigate = useNavigate();
 const [cocktails, setCocktails] =useState([]);
-const [auth, setAuth] = useState({});
-const cocktailService = cocktailsServiceFactory(auth && auth.accessToken);
-const authService = authServiceFactory(auth && auth.accessToken);
+const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
 
 
 
@@ -40,59 +36,9 @@ const authService = authServiceFactory(auth && auth.accessToken);
 
   
 
-const onLoginSubmit = async (data) => {
-        try {
-          const result =  await authService.login(data)
-          console.log(result)
-          setAuth(result)
-          console.log(auth);
-          
-          navigate('/')
-        } catch (error) {
-          console.log(error)
-          throw new Error(error.message)
-        }
-        
-    }
-
-    const onRegisterSubmit = async(values) =>{
-      const {RePass, ...registerData} = values
-      if(RePass !== registerData.Password) {
-        throw new Error('Passwords don`t match')
-
-      }
-
-      try {
-        const result = await authService.register(registerData)
-        setAuth(result)
-
-        navigate('/')
-      } catch (error) {
-        console.log(error)
-        throw new Error(error.message)
-      }
-    }
-
-     const onLogout = async () =>{
-      
-      setAuth({})
-      
-    };
-
-      const context = {
-        onLoginSubmit,
-        onRegisterSubmit,
-        onLogout,
-        userId: auth._id,
-        token : auth.accessToken,
-        userEmail : auth.email,
-        username: auth.username,
-        isAuthenticated : !!auth.accessToken,
-      }
-
       const onCreateCocktailSubmit = async (data) => {
     
-          const newCocktail = await cocktailService.create(data,auth.accessToken);
+          const newCocktail = await cocktailService.create(data,);//auth.accessToken
   
           setCocktails(state => [...state, newCocktail]);
   
@@ -101,7 +47,7 @@ const onLoginSubmit = async (data) => {
   return (
   <>
 
-    <AuthContext.Provider value={context}>
+    <AuthProvider>
 
       <BootstrapLink />    
       <Header/>
@@ -123,7 +69,7 @@ const onLoginSubmit = async (data) => {
 		</main>
       
       <Footer />
-    </AuthContext.Provider>
+    </AuthProvider>
   </>
       
       
