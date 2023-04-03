@@ -14,7 +14,6 @@ export const cocktailsServiceFactory = (token) => {
      const create = async (cocktailData,token) => {
         
         const result = await request.post(baseUrl,cocktailData,token)
-        console.log(result);
         return result
     }
 

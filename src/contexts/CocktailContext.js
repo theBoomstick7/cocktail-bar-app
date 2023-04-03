@@ -20,7 +20,7 @@ export const CocktailProvider = ({
           .then(result => {
               setCocktails(result);
           })
-      },[]);
+      },[cocktails]);
 
     
       const onCreateCocktailSubmit = async (data) => {
@@ -32,9 +32,15 @@ export const CocktailProvider = ({
         navigate('/cocktails')
     }
 
+    const onDeleteCocktail = async (id) => {
+        
+        await cocktailService.deleteOne(id)
+    }
+
     const context = {
         cocktails,
-        onCreateCocktailSubmit
+        onCreateCocktailSubmit,
+        onDeleteCocktail
     }
 
     return (
