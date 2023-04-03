@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState,useContext } from 'react'
+import { CocktailContext } from '../../../../contexts/CocktailContext'
 
 import styles from '../Create/createCocktail.module.css'
-export const CreateCocktail = ({
-    onCreateCocktailSubmit
-}) => {
+export const CreateCocktail = () => {
 
+    const {onCreateCocktailSubmit} = useContext(CocktailContext)
     const [ingredients, setIngredients] = useState({})
     const [values, setValues] = useState({
         name: '',

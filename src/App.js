@@ -3,6 +3,7 @@ import { Routes,Route, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { CocktailProvider } from './contexts/CocktailContext';
 import  {cocktailsServiceFactory} from './services/cocktailService';
 
 
@@ -20,36 +21,15 @@ import { Cocktails } from './components/cocktails/Cocktails/Cocktails';
 import { Blogs} from './components/blogs/Blogs/Blogs'
 import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCocktail';
 import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetails/CocktailDetails';
+import { DeleteCocktail } from './components/cocktails/Cocktails/DeleteCocktail/DeleteCocktail';
 
 function App() {
-const navigate = useNavigate();
-const [cocktails, setCocktails] =useState([]);
-const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
 
-
-
-    useEffect(() => {
-      cocktailService.getAll()
-        .then(result => {
-            setCocktails(result);
-        })
-    },[]);
-
-  
-
-      const onCreateCocktailSubmit = async (data) => {
-    
-          const newCocktail = await cocktailService.create(data,);//auth.accessToken
-  
-          setCocktails(state => [...state, newCocktail]);
-  
-          navigate('/cocktails')
-      }
   return (
   <>
 
     <AuthProvider>
-
+      <CocktailProvider>
       <BootstrapLink />    
       <Header/>
         <main>
@@ -59,10 +39,15 @@ const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
           <Route  path='/logout'  element={<Logout />}/>
           <Route  path='/register' element={<Register />}/>
           <Route  path='/recipies' element={<Recipies />}/>
-          <Route  path='/cocktails' element= {<Cocktails cocktails={cocktails} />} />
           <Route  path='/blogs' element= {<Blogs />} />
-          <Route path='/cocktails/create' element= {<CreateCocktail onCreateCocktailSubmit={onCreateCocktailSubmit}/>} />
-          <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
+          
+            
+                <Route path='/cocktails' element= {<Cocktails  />} />
+                <Route path='/cocktails/create' element= {<CreateCocktail />} />
+                <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
+                <Route path='/cocktails/:cocktailId/delete' element = {<DeleteCocktail />} />
+           
+
           
           <Route  path='*' element={<h1>404</h1>}/>
 
@@ -70,6 +55,7 @@ const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
 		</main>
       
       <Footer />
+      </CocktailProvider>
     </AuthProvider>
   </>
       

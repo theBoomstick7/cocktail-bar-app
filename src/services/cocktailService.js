@@ -14,7 +14,7 @@ export const cocktailsServiceFactory = (token) => {
      const create = async (cocktailData,token) => {
         
         const result = await request.post(baseUrl,cocktailData,token)
-        
+        console.log(result);
         return result
     }
 
@@ -22,11 +22,16 @@ export const cocktailsServiceFactory = (token) => {
         const result = await request.get(`${baseUrl}/${id}`)
         return result
     }
+    const deleteOne = async(id) => {
+        const result = await request.del(`${baseUrl}/${id}`)
+        return result
+    }
 
 
     return {
         getAll,
         create,
-        getOne
+        getOne,
+        deleteOne
     }
 }
