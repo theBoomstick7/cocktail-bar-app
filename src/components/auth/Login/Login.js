@@ -12,6 +12,7 @@ const LoginFormKeys = {
 export const Login = () => {
 
     const {onLoginSubmit} = useContext(AuthContext)
+
     const {values, changeHandler,onSubmit} = useForm({
         [LoginFormKeys.Email] : '',
         [LoginFormKeys.Password]: '',
@@ -19,6 +20,8 @@ export const Login = () => {
 
   
     return ( 
+        <>
+        
         <form id='login' onSubmit={onSubmit}>
             <div className={styles.login}>
 
@@ -46,6 +49,7 @@ export const Login = () => {
             </div>
 
         </form>
+        </>
 
 
     )

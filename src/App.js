@@ -22,6 +22,7 @@ import { Blogs} from './components/blogs/Blogs/Blogs'
 import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCocktail';
 import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetails/CocktailDetails';
 import { DeleteCocktail } from './components/cocktails/Cocktails/DeleteCocktail/DeleteCocktail';
+import { EditCocktail } from './components/cocktails/Cocktails/EditCocktail/EditCocktail';
 
 function App() {
 
@@ -46,6 +47,8 @@ function App() {
                 <Route path='/cocktails/create' element= {<CreateCocktail />} />
                 <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
                 <Route path='/cocktails/:cocktailId/delete' element = {<DeleteCocktail />} />
+                <Route path='/cocktails/:cocktailId/edit' element = {<EditCocktail />} />
+
            
 
           

@@ -20,7 +20,7 @@ export const CocktailProvider = ({
           .then(result => {
               setCocktails(result);
           })
-      },[cocktails]);
+      },[]);
 
     
       const onCreateCocktailSubmit = async (data) => {
@@ -35,12 +35,20 @@ export const CocktailProvider = ({
     const onDeleteCocktail = async (id) => {
         
         await cocktailService.deleteOne(id)
+        setCocktails((prevCocktails) => prevCocktails.filter((cocktail) => cocktail.id !== id));
+    }
+    const onCocktailEditSubmit = async (values) => {
+        const result = await cocktailService.edit(values._id,values)
+
+        setCocktails(state => state.map(x=> x._id === values._id ? result : x))
+        navigate(`/cocktails/${values._id}`)
     }
 
     const context = {
         cocktails,
         onCreateCocktailSubmit,
-        onDeleteCocktail
+        onDeleteCocktail,
+        onCocktailEditSubmit
     }
 
     return (

@@ -25,12 +25,14 @@ export const cocktailsServiceFactory = (token) => {
         const result = await request.del(`${baseUrl}/${id}`)
         return result
     }
+    const edit = (id,data) => request.put(`${baseUrl}/${id}`,data)
 
 
     return {
         getAll,
         create,
         getOne,
-        deleteOne
+        deleteOne,
+        edit
     }
 }

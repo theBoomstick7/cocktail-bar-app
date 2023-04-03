@@ -4,10 +4,10 @@ import styles from '../Cocktails/cocktails.module.css'
 import { useContext } from 'react'
 import { CocktailContext } from '../../../contexts/CocktailContext'
 
-export const Cocktails = ({
-}) => {
+export const Cocktails = () => {
 
     const {cocktails} = useContext(CocktailContext)
+
     return(
         <section className={styles.cocktailsSelection}>
             <div className={styles.titles}>

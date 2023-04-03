@@ -36,13 +36,10 @@ export const AuthProvider = ({
       const onLoginSubmit = async (data) => {
         try {
           const result =  await authService.login(data)
-          console.log(result)
           setAuth(result)
-          console.log(auth);
           
           navigate('/')
         } catch (error) {
-          console.log(error)
           throw new Error(error.message)
         }
         
