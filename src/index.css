@@ -12,7 +12,8 @@ body {
 }
 #root {
   min-height: 100vh;
-  position: relative;
+  position: relative; 
+  min-width: 100vw;
 }
 
 code {

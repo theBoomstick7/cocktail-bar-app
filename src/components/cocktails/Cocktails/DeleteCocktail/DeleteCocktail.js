@@ -7,6 +7,8 @@ export const DeleteCocktail = () => {
     const {onDeleteCocktail} = useContext(CocktailContext)
 
     useEffect(() => {
+        // eslint-disable-next-line no-restricted-globals
+        confirm('Are you sure you want to delete this cocktail?')
         onDeleteCocktail(cocktailId)
     },[onDeleteCocktail])
     return(

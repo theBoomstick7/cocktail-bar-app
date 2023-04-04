@@ -1,18 +1,46 @@
 .createForm{
-    width: 100vw;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    background-color: beige;
+    margin: 0 auto;
 }
+.createForm input[type="text"],textarea,select{
+    background-color: aliceblue; 
+    border: 0.5px solid gray;
+    border-radius: 15px;
+ }
+  
 .ingredients{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+    text-align: right;
 }
 
-/* .ingredient{
-    gap: 1rem;
-} */
+.ingredients div label{
+    margin-right: 1rem
+}
+.ingredients div {
+    border: 1px none black;
+    border-style: dashed none;
+    border-radius: 10px;
+    padding: 0 0.5rem;
+}
+.ingredients div:hover{
+    background-color: aliceblue; 
+}
+.button{
+    margin-top: 1rem;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    border-radius: 10px;
+
+}
+.button:hover{
+    background-color: antiquewhite;
+}

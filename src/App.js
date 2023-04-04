@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
-import { Routes,Route, useNavigate} from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Routes,Route} from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { CocktailProvider } from './contexts/CocktailContext';
-import  {cocktailsServiceFactory} from './services/cocktailService';
 
 
 import { Login } from './components/auth/Login/Login';
@@ -23,6 +21,7 @@ import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCo
 import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetails/CocktailDetails';
 import { DeleteCocktail } from './components/cocktails/Cocktails/DeleteCocktail/DeleteCocktail';
 import { EditCocktail } from './components/cocktails/Cocktails/EditCocktail/EditCocktail';
+import './App.css';
 
 function App() {
 
@@ -33,7 +32,7 @@ function App() {
       <CocktailProvider>
       <BootstrapLink />    
       <Header/>
-        <main>
+        <main className='main'>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route  path='/login' element={<Login />} />

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 export const Cocktail = ({
     _id,
     name,
-    imageUrl,
-    difficulty,
+    imageUrl,    
     recipe
 }) => {
 
@@ -15,7 +14,9 @@ export const Cocktail = ({
 
             <img src={imageUrl} alt="any" />
 
-            <p className={styles.description}>{recipe}</p>
+            <div className={styles.description}>
+                <div>{recipe}</div>
+            </div>
 
             <Link to={`/cocktails/${_id}`}>Recipies & more </Link>
 

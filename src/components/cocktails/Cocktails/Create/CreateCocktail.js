@@ -34,7 +34,7 @@ export const CreateCocktail = () => {
 
                 <h2>Add a cocktail to the catalogue</h2>
 
-                <label htmlFor="name">Cocktail name</label>
+                <h3>Name</h3>
                 <input type="text"
                         name = "name"
                         id = "name"
@@ -55,27 +55,33 @@ export const CreateCocktail = () => {
 
                     <h3>Ingredients</h3>
                 <div className={styles.ingredients}>    
-                        
+                   <div>
                         <label htmlFor="vodka">Vodka</label>
                         <input type="checkbox" name="vodka" id="vodka" onChange={onIngredientsChange}  checked= {ingredients['vodka'] || false}/>
+                    </div>     
                     
-                    
+                    <div>
                         <label htmlFor="rum">Rum</label>
                         <input type="checkbox" name="rum" id="rum" onChange={onIngredientsChange}  checked= {ingredients['rum'] || false}/>
+                    </div>     
                     
 
-
-                    <label htmlFor="whiskey">Whiskey</label>
-                    <input type="checkbox" name="whiskey" id="whiskey" onChange={onIngredientsChange}  checked= {ingredients['whiskey'] || false}/>
-
-                    <label htmlFor="sugar">Sugar</label>
-                    <input type="checkbox" name="sugar" id="sugar" onChange={onIngredientsChange}  checked= {ingredients['sugar'] || false}/>
-
-                    <label htmlFor="lemon">Lemon juice</label>
-                    <input type="checkbox" name="lemon" id="lemon" onChange={onIngredientsChange}  checked= {ingredients['lemon'] || false}/>
-
-                    <label htmlFor="tequila">Tequila</label>
-                    <input type="checkbox" name="tequila" id="tequila" onChange={onIngredientsChange}  checked= {ingredients['tequila'] || false}/>       
+                    <div>
+                        <label htmlFor="whiskey">Whiskey</label>
+                        <input type="checkbox" name="whiskey" id="whiskey" onChange={onIngredientsChange}  checked= {ingredients['whiskey'] || false}/>
+                    </div>     
+                    <div>
+                        <label htmlFor="sugar">Sugar</label>
+                        <input type="checkbox" name="sugar" id="sugar" onChange={onIngredientsChange}  checked= {ingredients['sugar'] || false}/>
+                    </div>     
+                    <div>
+                        <label htmlFor="lemon">Lemon juice</label>
+                        <input type="checkbox" name="lemon" id="lemon" onChange={onIngredientsChange}  checked= {ingredients['lemon'] || false}/>
+                    </div>     
+                    <div>
+                        <label htmlFor="tequila">Tequila</label>
+                        <input type="checkbox" name="tequila" id="tequila" onChange={onIngredientsChange}  checked= {ingredients['tequila'] || false}/>       
+                    </div>     
                 </div>
                 
 
@@ -92,7 +98,7 @@ export const CreateCocktail = () => {
                         <option value="Hard">Hard</option>
                 </select>
 
-                <input type="submit" value="Create" />
+                <input type="submit" value="Create" className={styles.button} />
             </div>
 
 

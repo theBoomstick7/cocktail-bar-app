@@ -34,8 +34,8 @@ export const CocktailProvider = ({
 
     const onDeleteCocktail = async (id) => {
         
+        setCocktails((prevCocktails) => prevCocktails.filter((cocktails) => cocktails._id !== id));
         await cocktailService.deleteOne(id)
-        setCocktails((prevCocktails) => prevCocktails.filter((cocktail) => cocktail.id !== id));
     }
     const onCocktailEditSubmit = async (values) => {
         const result = await cocktailService.edit(values._id,values)

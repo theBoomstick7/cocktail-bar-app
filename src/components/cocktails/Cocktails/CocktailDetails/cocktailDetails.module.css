@@ -1,0 +1,46 @@
+.edit{
+    max-width: 35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: beige;
+    height:fit-content ;
+}
+.edit img{
+    max-width: 15rem;
+    
+}
+.title{
+    font-size: 1.3rem;
+}
+.ingredients{
+    padding-top: 0.3rem;
+}
+.recipe{
+    max-width: 25rem;
+    min-height: 10rem;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+    border: 1px solid black;
+}
+.buttons{
+    max-width: fit-content;
+    display: flex;
+    gap: 2rem;
+}
+.buttons a{ 
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+}
+.buttons a:hover{
+    background-color: antiquewhite;
+    color: black;
+}

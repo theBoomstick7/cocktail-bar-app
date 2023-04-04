@@ -32,7 +32,7 @@ export const EditCocktail = () => {
     
                     <h2>Edit a cocktail from the catalogue</h2>
     
-                    <label htmlFor="name">Cocktail name</label>
+                    <h3>Name</h3>
                     <input type="text"
                             name = "name"
                             id = "name"
@@ -91,7 +91,7 @@ export const EditCocktail = () => {
                     <textarea name="recipe" id="recipe" cols="50" rows="5" value={values.recipe} onChange ={changeHandler}></textarea>
     
                     <h3>Difficulty</h3>
-                    <label htmlFor="difficulty">Level of difficulty</label>
+                    <label htmlFor="difficulty"></label>
                     <select name="difficulty" id="difficulty" value={values.difficulty} onChange={changeHandler}>
                             <option value="Easy">Easy</option>
                             <option value="Medium">Medium</option>

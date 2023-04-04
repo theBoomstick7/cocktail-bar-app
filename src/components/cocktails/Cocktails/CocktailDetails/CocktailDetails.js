@@ -3,6 +3,7 @@ import { useParams,Link } from 'react-router-dom'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { cocktailsServiceFactory } from '../../../../services/cocktailService'
 
+import styles from '../CocktailDetails/cocktailDetails.module.css'
 export const CocktailDetails = () => {
     const {cocktailId} = useParams()
 
@@ -27,26 +28,28 @@ export const CocktailDetails = () => {
 
     return (
         <>
-            <h1>{cocktail.name}</h1>
+            <div className={styles.edit}>
+                
+                <h2>{cocktail.name}</h2>
 
-            <p>{cocktail.difficulty}</p>
+                <p className={styles.title}> Difficulty: {cocktail.difficulty}</p>                
+                <img src={cocktail.imageUrl} alt={cocktail._id} />
 
-            <img src={cocktail.imageUrl} alt={cocktail._id} />
-
-            <ul>
-                {cocktail.ingredients && (cocktail?.ingredients).map(x => 
-                    <li key={x}>{x}</li>)}
-               
-            </ul>
-
-            <p>{cocktail.recipe}</p>
-            
-            {isOwner && 
-                <>
-                        <Link to= {`/cocktails/${cocktailId}/delete`}>Delete</Link>
-                        <Link to= {`/cocktails/${cocktailId}/edit`}>Edit</Link>
-                </>
-            }
+                <ul>
+                    <p className={styles.title}>Ingredients -</p>
+                    {cocktail.ingredients && cocktail?.ingredients.map(x => 
+                        <li className={styles.ingredients} key={x}>{x}</li>)}
+                </ul>
+                <p className={styles.title}>Recipe</p>
+                <p className={styles.recipe}>{cocktail.recipe}</p>
+                
+                {isOwner && 
+                    <div className={styles.buttons}>
+                            <Link to= {`/cocktails/${cocktailId}/delete`}>Delete</Link>
+                            <Link to= {`/cocktails/${cocktailId}/edit`}>Edit</Link>
+                    </div>
+                }
+            </div>
 
         </>
 
