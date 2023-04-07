@@ -11,7 +11,6 @@
 }
 .edit img{
     max-width: 15rem;
-    
 }
 .title{
     font-size: 1.3rem;
@@ -28,6 +27,15 @@
     justify-content: center; */
     text-align: center;
     border: 1px solid black;
+}
+.likeButton{
+    margin-bottom: 1rem;
+    background-color: beige;
+    padding: 0.8rem 0.8rem;
+    border-radius: 50px;
+}
+.likeButton:hover{
+    background-color: antiquewhite;
 }
 .buttons{
     max-width: fit-content;

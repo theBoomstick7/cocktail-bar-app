@@ -57,12 +57,8 @@ export const CocktailDetails = () => {
     return (
         <>
             <div className={styles.edit}>
-                <h1>{cocktail?.likes.length}</h1>
-                <h2>{cocktail.name}</h2>
-                {!hasLiked && userId &&  <button onClick={onLikeClicked}>
-                    <FontAwesomeIcon icon={faHeart} size='lg' />
-                </button>}
-               
+                
+                    <h2>{cocktail.name}</h2>
                 <p className={styles.title}> Difficulty: {cocktail.difficulty}</p>                
                 <img src={cocktail.imageUrl} alt={cocktail._id} />
 
@@ -71,9 +67,13 @@ export const CocktailDetails = () => {
                     {cocktail.ingredients && cocktail?.ingredients.map(x => 
                         <li className={styles.ingredients} key={x}>{x}</li>)}
                 </ul>
+                        <p className={styles.title}>Likes : <span></span>{cocktail?.likes.length}</p>
                 <p className={styles.title}>Recipe</p>
                 <p className={styles.recipe}>{cocktail.recipe}</p>
-                
+                {!hasLiked && userId 
+                    &&  <button className={styles.likeButton} onClick={onLikeClicked}>
+                            <FontAwesomeIcon icon={faHeart} size='lg' />
+                        </button>}
                 {isOwner && 
                     <div className={styles.buttons}>
                             <Link to= {`/cocktails/${cocktailId}/delete`}>Delete</Link>
