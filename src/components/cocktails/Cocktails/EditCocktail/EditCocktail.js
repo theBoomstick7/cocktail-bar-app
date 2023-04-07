@@ -61,26 +61,26 @@ export const EditCocktail = () => {
                         
                             <label htmlFor="rum">Rum</label>
                             {/* <input type="checkbox" name="rum" id="rum" onChange={changeHandler}  checked= {values.ingredients['rum'] || false}/> */}
-                            <input type="checkbox" name="vodka" id="vodka" onChange={changeHandler} checked={values.ingredients.includes('rum')} />
+                            <input type="checkbox" name="rum" id="rum" onChange={changeHandler} checked={values.ingredients.includes('rum') } />
 
     
     
                         <label htmlFor="whiskey">Whiskey</label>
                         {/* <input type="checkbox" name="whiskey" id="whiskey" onChange={changeHandler}  checked= {values.ingredients['whiskey'] || false}/> */}
-                        <input type="checkbox" name="vodka" id="vodka" onChange={changeHandler} checked={values.ingredients.includes('whiskey')} />
+                        <input type="checkbox" name="whiskey" id="whiskey" onChange={changeHandler} checked={values.ingredients.includes('whiskey') } />
                         
     
                         <label htmlFor="sugar">Sugar</label>
-                        <input type="checkbox" name="vodka" id="vodka" onChange={changeHandler} checked={values.ingredients.includes('sugar')} />
+                        <input type="checkbox" name="sugar" id="sugar" onChange={changeHandler} checked={values.ingredients.includes('sugar') } />
 
     
                         <label htmlFor="lemon">Lemon juice</label>
                         {/* <input type="checkbox" name="lemon" id="lemon" onChange={changeHandler}  checked= {values.ingredients['lemon'] || false}/> */}
-                        <input type="checkbox" name="vodka" id="vodka" onChange={changeHandler} checked={values.ingredients.includes('lemon')} />
+                        <input type="checkbox" name="lemon" id="lemon" onChange={changeHandler} checked={values.ingredients.includes('lemon')} />
 
                         <label htmlFor="tequila">Tequila</label>
                         {/* <input type="checkbox" name="tequila" id="tequila" onChange={changeHandler}  checked= {values.ingredients['tequila'] || false}/>        */}
-                        <input type="checkbox" name="vodka" id="vodka" onChange={changeHandler} checked={values.ingredients.includes('tequila')} />
+                        <input type="checkbox" name="tequila" id="tequila" onChange={changeHandler} checked={values.ingredients.includes('tequila')} />
 
                     </div>
                     
