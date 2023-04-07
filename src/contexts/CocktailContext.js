@@ -2,7 +2,6 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import  {cocktailsServiceFactory} from '../services/cocktailService';
-import { create} from '../services/likeService';
 import { AuthContext } from './AuthContext';
 import { likeServiceFactory } from '../services/likeService';
 export const CocktailContext = createContext()
@@ -14,16 +13,30 @@ export const CocktailProvider = ({
     const {token} = useContext(AuthContext)
     const cocktailService = cocktailsServiceFactory(token);//auth && auth.accessToken
     const likeService = likeServiceFactory(token)
+    // const[loaded, setLoaded] = useState(true)
     
     const navigate = useNavigate();
 
-
+    // useEffect(() => {
+    //     cocktailService.getAll()
+    //       .then(result => {
+    //         console.log(result);
+    //           if(result.length >0){
+    //           setLoaded(false)
+    //           }else{
+    //           setLoaded(true)
+    //               }
+    //           setCocktails(result);
+    //       })
+    //   },[]); 
     
     useEffect(() => {
         cocktailService.getAll()
           .then(result => {
+                console.log(result);
               setCocktails(result);
-          })
+          }).catch((error) => {
+         setCocktails([])})
       },[]);
 
     

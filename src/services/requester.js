@@ -40,7 +40,7 @@ const requester = async (method,token,url,data) => {
             return res.json()
         }
     } catch (error) {
-        alert(error.message);
+        // alert(error.message);
         throw error
     }
 }
