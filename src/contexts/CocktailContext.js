@@ -1,16 +1,19 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import  {cocktailsServiceFactory} from '../services/cocktailService';
-import { create, getAllLikesForId } from '../services/likeService';
-
+import { create} from '../services/likeService';
+import { AuthContext } from './AuthContext';
+import { likeServiceFactory } from '../services/likeService';
 export const CocktailContext = createContext()
 
 export const CocktailProvider = ({
     children,
 }) => {
     const [cocktails, setCocktails] =useState([]);
-    const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
+    const {token} = useContext(AuthContext)
+    const cocktailService = cocktailsServiceFactory(token);//auth && auth.accessToken
+    const likeService = likeServiceFactory(token)
     
     const navigate = useNavigate();
 
@@ -45,7 +48,7 @@ export const CocktailProvider = ({
         navigate(`/cocktails/${values._id}`)
     }
     const likeCocktail = async (cocktailId,userId) => {
-       const result = await create(cocktailId,userId)
+       const result = await likeService.create(cocktailId,userId)
        return result
     }
 

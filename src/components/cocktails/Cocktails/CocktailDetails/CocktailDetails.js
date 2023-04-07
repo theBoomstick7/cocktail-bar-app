@@ -8,16 +8,18 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import styles from '../CocktailDetails/cocktailDetails.module.css'
 import { CocktailContext } from '../../../../contexts/CocktailContext'
-import { getAllLikesForId } from '../../../../services/likeService'
+import { likeServiceFactory } from '../../../../services/likeService'
 export const CocktailDetails = () => {
    
     let isOwner = false
     
     const {cocktailId} = useParams()
 
-    const {userId} = useContext(AuthContext)
+    const {userId,token} = useContext(AuthContext)
     const {likeCocktail} = useContext(CocktailContext)
+    const likeService = likeServiceFactory(token)
 
+    
     const [cocktail, setCocktail] = useState({
         likes:[]
     })
@@ -31,10 +33,9 @@ export const CocktailDetails = () => {
     useEffect(()=> {
         Promise.all(
             [cocktailService.getOne(cocktailId),
-            getAllLikesForId(cocktailId)]
+                likeService.getAllLikesForId(cocktailId)]
         )
          .then(([cocktailData,likes]) => {
-            console.log(likes);
              setCocktail({
                 ...cocktailData,
                 likes
@@ -51,15 +52,17 @@ export const CocktailDetails = () => {
         }))
        
     }
+    const hasLiked = cocktail.likes.some(like => like.userId === userId);
 
     return (
         <>
             <div className={styles.edit}>
                 <h1>{cocktail?.likes.length}</h1>
                 <h2>{cocktail.name}</h2>
-                <button onClick={onLikeClicked}>
+                {!hasLiked && userId &&  <button onClick={onLikeClicked}>
                     <FontAwesomeIcon icon={faHeart} size='lg' />
-                </button>
+                </button>}
+               
                 <p className={styles.title}> Difficulty: {cocktail.difficulty}</p>                
                 <img src={cocktail.imageUrl} alt={cocktail._id} />
 

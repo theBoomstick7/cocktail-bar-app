@@ -15,14 +15,11 @@ const requester = async (method,token,url,data) => {
             options.body = JSON.stringify(data);
         };
     }
-    
-  
-    
+
     try {
         
         if(token){
-    
-
+            
             options.headers = {
                 ...options.headers,
                 'X-Authorization': token
