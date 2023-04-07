@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import  {cocktailsServiceFactory} from '../services/cocktailService';
-
+import { create, getAllLikesForId } from '../services/likeService';
 
 export const CocktailContext = createContext()
 
@@ -11,6 +11,7 @@ export const CocktailProvider = ({
 }) => {
     const [cocktails, setCocktails] =useState([]);
     const cocktailService = cocktailsServiceFactory();//auth && auth.accessToken
+    
     const navigate = useNavigate();
 
 
@@ -43,12 +44,17 @@ export const CocktailProvider = ({
         setCocktails(state => state.map(x=> x._id === values._id ? result : x))
         navigate(`/cocktails/${values._id}`)
     }
+    const likeCocktail = async (cocktailId,userId) => {
+       const result = await create(cocktailId,userId)
+       return result
+    }
 
     const context = {
         cocktails,
         onCreateCocktailSubmit,
         onDeleteCocktail,
-        onCocktailEditSubmit
+        onCocktailEditSubmit,
+        likeCocktail
     }
 
     return (

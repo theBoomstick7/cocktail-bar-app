@@ -3,16 +3,25 @@ import { useParams,Link } from 'react-router-dom'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { cocktailsServiceFactory } from '../../../../services/cocktailService'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
 import styles from '../CocktailDetails/cocktailDetails.module.css'
+import { CocktailContext } from '../../../../contexts/CocktailContext'
+import { getAllLikesForId } from '../../../../services/likeService'
 export const CocktailDetails = () => {
+   
+    let isOwner = false
+    
     const {cocktailId} = useParams()
 
     const {userId} = useContext(AuthContext)
+    const {likeCocktail} = useContext(CocktailContext)
 
-    const [cocktail, setCocktail] = useState({})
-
-    let isOwner = false
-
+    const [cocktail, setCocktail] = useState({
+        likes:[]
+    })
+    
     if(userId === cocktail._ownerId) {
         isOwner = true
     }
@@ -20,18 +29,37 @@ export const CocktailDetails = () => {
     const cocktailService = cocktailsServiceFactory()
 
     useEffect(()=> {
-         cocktailService.getOne(cocktailId)
-         .then(result => {
-             setCocktail(result)
+        Promise.all(
+            [cocktailService.getOne(cocktailId),
+            getAllLikesForId(cocktailId)]
+        )
+         .then(([cocktailData,likes]) => {
+            console.log(likes);
+             setCocktail({
+                ...cocktailData,
+                likes
+             })
          })
     },[cocktailId])
+
+    const onLikeClicked = async () =>{
+
+        const response = await likeCocktail(cocktailId,userId)
+        setCocktail(state => ({
+            ...state,
+            likes: [...state.likes,response]
+        }))
+       
+    }
 
     return (
         <>
             <div className={styles.edit}>
-                
+                <h1>{cocktail?.likes.length}</h1>
                 <h2>{cocktail.name}</h2>
-
+                <button onClick={onLikeClicked}>
+                    <FontAwesomeIcon icon={faHeart} size='lg' />
+                </button>
                 <p className={styles.title}> Difficulty: {cocktail.difficulty}</p>                
                 <img src={cocktail.imageUrl} alt={cocktail._id} />
 

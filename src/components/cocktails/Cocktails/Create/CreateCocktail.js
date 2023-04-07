@@ -10,7 +10,8 @@ export const CreateCocktail = () => {
         name: '',
         recipe: '',
         imageUrl: '',
-        difficulty: ''
+        difficulty: '',
+        likes: []
     })
 
     const onChangeHandler = (e) => {
