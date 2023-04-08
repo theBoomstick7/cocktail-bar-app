@@ -16,10 +16,12 @@ export const AuthProvider = ({
 
 
     const onRegisterSubmit = async(values) =>{
-        const {RePass, ...registerData} = values
-        if(RePass !== registerData.Password) {
-          throw new Error('Passwords don`t match')
-  
+      console.log(values);
+        const {repass, ...registerData} = values
+        console.log(repass);
+        if(repass !== registerData.password) {
+          alert('Passwords don`t match')
+          return
         }
   
         try {
