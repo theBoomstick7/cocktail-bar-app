@@ -4,6 +4,8 @@ import { cocktailsServiceFactory } from '../../../services/cocktailService'
 import { likeServiceFactory } from '../../../services/likeService'
 import { Cocktail } from '../Cocktails/Cocktail/Cocktail'
 import styles from '../Cocktails/cocktails.module.css'
+import { Link } from 'react-router-dom'
+
 export const FavouriteCocktails = () => {
 
     const {userId,token} = useContext(AuthContext)
@@ -44,6 +46,12 @@ export const FavouriteCocktails = () => {
                 {cocktail.map((x) => (
                     <Cocktail key={x._id} {...x} />
                 ))}
+                 {cocktail.length === 0 && (
+                  <>
+                        <h3>NO FAVOURITE COCKTAILS YET</h3>
+                        <li><Link to={'/cocktails/create'}>Add a cocktail</Link></li>
+                  </>
+                    )}
             </div>
         </section>
         </>

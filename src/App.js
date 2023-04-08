@@ -16,13 +16,15 @@ import { Home } from './components/common/Home';
 import { BootstrapLink } from '././components/common/StylesLink';
 import { Recipies } from './components/cocktails/Recipies/Recipies';
 import { Cocktails } from './components/cocktails/Cocktails/Cocktails';
-import { Blogs} from './components/blogs/Blogs/Blogs'
 import { CreateCocktail } from './components/cocktails/Cocktails/Create/CreateCocktail';
 import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetails/CocktailDetails';
 import { DeleteCocktail } from './components/cocktails/Cocktails/DeleteCocktail/DeleteCocktail';
 import { EditCocktail } from './components/cocktails/Cocktails/EditCocktail/EditCocktail';
 import './App.css';
 import { FavouriteCocktails } from './components/cocktails/Favourites/Favourites';
+import { UserGuard } from './guards/UserGuard';
+import { GuestGuard } from './guards/GuestGuard';
+
 
 function App() {
 
@@ -36,21 +38,23 @@ function App() {
         <main className='main'>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route  path='/login' element={<Login />} />
-          <Route  path='/logout'  element={<Logout />}/>
-          <Route  path='/register' element={<Register />}/>
           <Route  path='/recipies' element={<Recipies />}/>
           <Route  path='/favourites' element= {<FavouriteCocktails />} />
-          
+          <Route  path='/logout'  element={<Logout />}/>
             
-                <Route path='/cocktails' element= {<Cocktails  />} />
+          <Route path='/cocktails' element= {<Cocktails  />} />
+          <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
+          
+          <Route element={<GuestGuard />}>
+                <Route  path='/login' element={<Login />} />
+                <Route  path='/register' element={<Register />}/>
+          </Route>
+
+          <Route element={<UserGuard />}>
                 <Route path='/cocktails/create' element= {<CreateCocktail />} />
-                <Route path='/cocktails/:cocktailId' element = {<CocktailDetails />} />
                 <Route path='/cocktails/:cocktailId/delete' element = {<DeleteCocktail />} />
                 <Route path='/cocktails/:cocktailId/edit' element = {<EditCocktail />} />
-
-           
-
+          </Route>
           
           <Route  path='*' element={<h1>404</h1>}/>
 
