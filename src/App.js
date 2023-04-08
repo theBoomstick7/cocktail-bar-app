@@ -22,6 +22,7 @@ import { CocktailDetails } from './components/cocktails/Cocktails/CocktailDetail
 import { DeleteCocktail } from './components/cocktails/Cocktails/DeleteCocktail/DeleteCocktail';
 import { EditCocktail } from './components/cocktails/Cocktails/EditCocktail/EditCocktail';
 import './App.css';
+import { FavouriteCocktails } from './components/cocktails/Favourites/Favourites';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
           <Route  path='/logout'  element={<Logout />}/>
           <Route  path='/register' element={<Register />}/>
           <Route  path='/recipies' element={<Recipies />}/>
-          <Route  path='/blogs' element= {<Blogs />} />
+          <Route  path='/favourites' element= {<FavouriteCocktails />} />
           
             
                 <Route path='/cocktails' element= {<Cocktails  />} />

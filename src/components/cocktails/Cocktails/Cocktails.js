@@ -6,7 +6,7 @@ import { CocktailContext } from '../../../contexts/CocktailContext'
 
 export const Cocktails = () => {
 
-    const {cocktails,loaded} = useContext(CocktailContext)
+    const {cocktails} = useContext(CocktailContext)
 
     return(
         <>

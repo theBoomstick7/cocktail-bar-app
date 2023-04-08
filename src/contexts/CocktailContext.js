@@ -11,29 +11,15 @@ export const CocktailProvider = ({
 }) => {
     const [cocktails, setCocktails] =useState([]);
     const {token} = useContext(AuthContext)
-    const cocktailService = cocktailsServiceFactory(token);//auth && auth.accessToken
+    const cocktailService = cocktailsServiceFactory(token)
     const likeService = likeServiceFactory(token)
-    // const[loaded, setLoaded] = useState(true)
     
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     cocktailService.getAll()
-    //       .then(result => {
-    //         console.log(result);
-    //           if(result.length >0){
-    //           setLoaded(false)
-    //           }else{
-    //           setLoaded(true)
-    //               }
-    //           setCocktails(result);
-    //       })
-    //   },[]); 
-    
+
     useEffect(() => {
         cocktailService.getAll()
           .then(result => {
-                console.log(result);
               setCocktails(result);
           }).catch((error) => {
          setCocktails([])})
@@ -42,7 +28,7 @@ export const CocktailProvider = ({
     
       const onCreateCocktailSubmit = async (data) => {
     
-        const newCocktail = await cocktailService.create(data,);//auth.accessToken
+        const newCocktail = await cocktailService.create(data)
 
         setCocktails(state => [...state, newCocktail]);
 

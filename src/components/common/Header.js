@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
-import { AuthContext } from "../../contexts/AuthContext"
-import { useContext } from "react"
-import headerStyles from "../../styles/header.module.css"
+import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthContext'
+import { useContext } from 'react'
+import headerStyles from '../../styles/header.module.css'
 // import logo from '../../images/cocktail.jpg'
 
 export const Header = () => {
-    const {isAuthenticated,onLogoutClick,token} = useContext(AuthContext)
+    const {isAuthenticated,userEmail} = useContext(AuthContext)
 
 
     return( 
@@ -19,13 +19,13 @@ export const Header = () => {
                 <ul>
                     <li> <Link to={'/'}>Home</Link></li>
                     <li> <Link to={'/cocktails'}> Cocktails</Link> </li>
-                    <li><Link to={'/recipies'}> Recipies</Link> </li>
-                    <li><Link to={'/blogs'}> Blogs</Link> </li>
+                    {/* <li><Link to={'/recipies'}> Recipies</Link> </li> */}
+                    <li><Link to={'/favourites'}> Favorites</Link> </li>
                     {isAuthenticated && (
                         <>
                         <li><Link to={'/cocktails/create'}>Add a cocktail</Link></li>
                         <li><Link to={'/logout'}>Logout</Link></li>
-                        <span>Hello, {}</span>
+                        <span>Hello, {userEmail}</span>
                         </>
                     )}
                     {!isAuthenticated && (
