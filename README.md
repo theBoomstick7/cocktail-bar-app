@@ -111,6 +111,8 @@ DELETE /data/cocktails:id - deletes the cocktail recipe with the specified ID
 
 Each of these endpoints can be accessed by sending an HTTP request to the appropriate URL using a tool such as curl or Postman.
 
+Server Documentation :
+### https://github.com/softuni-practice-server/softuni-practice-server#readme
 Contributing:
 Contributions to the "cocktail-bar-app" repository are welcome. To contribute, fork the repository and create a new branch for your changes. Once you have made your changes, submit a pull request to the main repository.
 
