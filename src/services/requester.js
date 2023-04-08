@@ -27,37 +27,26 @@ const requester = async (method,token,url,data) => {
         };
         const res = await fetch(url, options);
 
-        if (res.ok === false)
-        {
-            const error = await res.json()
-            throw new Error(error.message);
-        }
-
         if (res.status === 204) {
             return {};
-        } else 
+        } else if (res.status === 404){
+            return [];
+        } else if (res.ok === false) {
+            
+             const error = await res.json()
+            throw new Error(error.message); 
+        }
+        else 
         {
             return res.json()
         }
+       
     } catch (error) {
-        // alert(error.message);
+        alert(error.message);
         throw error
     }
 }
 
-// export const get = async (url) => {
-//     return request('get',url); 
-// }
-
-// export const post = async (url,data,token) => {
-//     return request('post', url ,data,token);
-// }
-// export const put = async (url,data) => {
-//     return request('put', url,  data);
-// }
-// export const del = async (url) => {
-//     return request('put',url, 'delete')
-// }
 
 export const requestFactory = (token) => {
     
