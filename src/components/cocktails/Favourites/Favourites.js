@@ -18,6 +18,7 @@ export const FavouriteCocktails = () => {
         likeService.getAllLikesOfUser(userId)
           .then(result => {
             const cocktailIds = result.map(x => x.cocktailId);
+            console.log(result);
             setRes(cocktailIds);
           });
       },[userId]);
@@ -46,7 +47,10 @@ export const FavouriteCocktails = () => {
                 {cocktail.map((x) => (
                     <Cocktail key={x._id} {...x} />
                 ))}
-                 {cocktail.length === 0 && (
+                
+            </div>
+            <div className={styles.lower}>
+            {cocktail.length === 0 && (
                   <>
                         <h3>NO FAVOURITE COCKTAILS YET</h3>
                         <li><Link to={'/cocktails/create'}>Add a cocktail</Link></li>

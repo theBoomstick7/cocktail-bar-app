@@ -13,6 +13,7 @@ export const likeServiceFactory = (token) => {
             return result
         },
         create : async (cocktailId,userId) => {
+            
             const result = await request.post(baseUrl, {cocktailId,userId})
              return result
         },
@@ -20,7 +21,8 @@ export const likeServiceFactory = (token) => {
             const query = encodeURIComponent(`userId="${userId}"`);
             const result = await request.get(`${baseUrl}?where=${query}`)
             return result
-        }
+        },
+       
     }
 }
 
