@@ -1,8 +1,7 @@
 import styles from '../Login/login.module.css'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useContext } from 'react'
-import { useForm } from '../../../hooks/useForm'
-
+import { useFormCreated } from '../../../hooks/useFormCreated'
 
 const LoginFormKeys = {
     Email: 'email',
@@ -10,10 +9,8 @@ const LoginFormKeys = {
 }
 
 export const Login = () => {
-
     const {onLoginSubmit} = useContext(AuthContext)
-
-    const {values, changeHandler,onSubmit} = useForm({
+    const {values,errors, changeHandler,onSubmit,formValidate} = useFormCreated({
         [LoginFormKeys.Email] : '',
         [LoginFormKeys.Password]: '',
     }, onLoginSubmit)
@@ -34,15 +31,25 @@ export const Login = () => {
                     name={LoginFormKeys.Email}
                     value={values[LoginFormKeys.Email]}
                     onChange={changeHandler}
+                    onBlur={formValidate}
                 />
-
+                {errors[LoginFormKeys.Email] && 
+                <p>
+                    {errors[LoginFormKeys.Email]}    
+                </p>}
+               
                 <label htmlFor="password">Password</label>
                 <input type="password" 
                      placeholder='********'
                     name={LoginFormKeys.Password}
                      value={values[LoginFormKeys.Password]}
                      onChange= {changeHandler}
+                     onBlur={formValidate}
                 />
+                 {errors[LoginFormKeys.Password] && 
+                <p>
+                    {errors[LoginFormKeys.Password]}    
+                </p>}
 
               <input type='submit' value='Login'/> 
            

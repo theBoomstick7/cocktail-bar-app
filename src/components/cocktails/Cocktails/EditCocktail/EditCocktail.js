@@ -1,4 +1,4 @@
-import { useForm } from '../../../../hooks/useForm'
+import { useFormCreated } from '../../../../hooks/useFormCreated'
 import { useEffect, useContext } from 'react'
 import  styles from '../Create/createCocktail.module.css'
 import { useParams } from 'react-router-dom'
@@ -10,7 +10,7 @@ export const EditCocktail = () => {
     const {cocktailId} = useParams()
     const cocktailService = cocktailsServiceFactory()
     const {onCocktailEditSubmit} = useContext(CocktailContext)
-    const {values,changeHandler,onSubmit,changeValues} = useForm({
+    const {values,changeHandler,onSubmit,changeValues} = useFormCreated({
         _id: '',
         name: '',
         imageUrl: '',

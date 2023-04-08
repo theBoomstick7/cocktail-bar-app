@@ -1,6 +1,6 @@
 import styles from '../Register/register.module.css'
 import { useContext } from 'react'
-import { useForm } from '../../../hooks/useForm'
+import { useFormCreated } from '../../../hooks/useFormCreated'
 import { AuthContext } from '../../../contexts/AuthContext'
 
 export const Register = () => {
@@ -13,7 +13,7 @@ export const Register = () => {
     
     const {onRegisterSubmit} = useContext(AuthContext)
 
-    const {values,changeHandler,onSubmit} = useForm({
+    const {values,changeHandler,onSubmit} = useFormCreated({
         [registerFormKeys.Email]: '',
         [registerFormKeys.Username]: '',
         [registerFormKeys.Password]: '',
