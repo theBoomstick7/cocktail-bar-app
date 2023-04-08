@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +67,55 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+Documentation for the "cocktail-bar-app" repository:
+
+Introduction:
+The "cocktail-bar-app" repository is a Node.js application that allows users to browse and search for cocktail recipes. The application consists of a client-side web application and a server-side API. Users can interact with the application by browsing recipes, searching for recipes, and creating new recipes. The server-side API is responsible for storing and retrieving data about the cocktail recipes.
+
+Installation:
+To install the application, follow these steps:
+
+Clone the repository using the following command:
+
+### git clone https://github.com/theBoomstick7/cocktail-bar-app.git
+
+Install the necessary dependencies by navigating to the server folder and running the following command:
+
+### npm install
+Start the server by running the following command in the server folder:
+
+### node server.js
+
+Open a web browser and navigate to http://localhost:3000 to view the application.
+
+Usage:
+Once the application is running, users can interact with it by browsing and searching for cocktail recipes. The main page of the application displays a list of all available cocktail recipes. Users can click on a recipe to view more details about the recipe, including a list of ingredients and instructions for making the cocktail.
+
+To search for a specific recipe, users can enter a search term into the search bar at the top of the page. The application will filter the list of recipes to show only those that match the search term.
+
+Users can also create new cocktail recipes by clicking the "Add Recipe" button on the main page. This will open a form where users can enter information about the new recipe, including the recipe name, ingredients, and instructions.
+
+API Endpoints:
+The server-side API provides the following endpoints:
+
+GET /data/cocktails - returns a list of all available cocktail recipes
+
+GET /data/cocktails/:id - returns details about a specific cocktail recipe with the specified ID
+
+POST /data/cocktails - creates a new cocktail recipe with the provided data
+
+PUT /data/cocktails:id - updates the cocktail recipe with the specified ID with the provided data
+
+DELETE /data/cocktails:id - deletes the cocktail recipe with the specified ID
+
+Each of these endpoints can be accessed by sending an HTTP request to the appropriate URL using a tool such as curl or Postman.
+
+Contributing:
+Contributions to the "cocktail-bar-app" repository are welcome. To contribute, fork the repository and create a new branch for your changes. Once you have made your changes, submit a pull request to the main repository.
+
+License:
+The "cocktail-bar-app" repository is licensed under the MIT License. See the LICENSE file for more information.
+
+
+
